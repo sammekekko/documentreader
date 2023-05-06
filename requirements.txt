@@ -4,3 +4,6 @@ streamlit
 PyPDF2
 python-dotenv
 python-docx
+tiktoken
+pdfminer
+faiss-cpu

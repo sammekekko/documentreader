@@ -2,5 +2,5 @@ langchain
 openai
 streamlit
 PyPDF2
-docx
 python-dotenv
+python-docx

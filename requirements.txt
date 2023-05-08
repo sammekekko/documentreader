@@ -1,7 +1,7 @@
 langchain
 openai
 streamlit
-pypdf
+PyPDF2
 python-dotenv
 python-docx
 tiktoken

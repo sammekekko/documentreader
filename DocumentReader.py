@@ -3,7 +3,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
-from PyPDF2 import PdfReader
+from langchain.document_loaders import PyPDFLoader
 import streamlit as st
 from dotenv import load_dotenv
 from docx import Document
@@ -12,9 +12,8 @@ from docx import Document
 def read_docx(doc):
     text = ""
     if (doc.type == "application/pdf"):
-        doc_reader = PdfReader(doc)
-        for page in doc_reader.pages:
-            text += page.extract_text()
+        loader = PyPDFLoader(doc)
+        text = loader.load()
     elif (doc.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"):
         doc = Document(doc)
         for paragraph in doc.paragraphs:

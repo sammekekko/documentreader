@@ -12,8 +12,10 @@ from docx import Document
 def read_docx(doc):
     text = ""
     if (doc.type == "application/pdf"):
-        loader = PyPDFLoader(doc)
-        text = loader.load()
+        doc_reader = PyPDFLoader(doc)
+        pages = doc_reader.load_and_split()
+        for page in pages:
+            text += page.extract_text()
     elif (doc.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"):
         doc = Document(doc)
         for paragraph in doc.paragraphs:
